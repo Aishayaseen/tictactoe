@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kalnia:wght@100..700&family=Sahitya:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="index.css">
+    <title>Document</title>
+    <style>
+        @media(min-width:444px) {
+            body{
+                height: 100%;
+                width: 100%;
+                box-sizing: border-box;
+                display: flex;
+        justify-content: center;
+        align-items: center;
+            }
+            .box{
+                width: 100%;
+                height: 100%;
+          
+        /* flex-direction: column; */
+                margin-top: 50%;
+            }
+         
+            .first{
+                margin-top: 20px;
+                width: 80%;
+                margin-left: 45px;
+            }
+            .second{
+                width: 80%;
+                margin-left: 45px;
+            }
+            .third{
+                width: 80%;
+                margin-left: 45px;
+            }
+            button{
+                width: 80px;
+            }
+    h7 {
+        margin-left: -80px;
+        /* font-size: 500px; */
+    }
+
+    #reset {
+        margin-left: 40%;
+        margin-top: 5%;
+        width: 98px;
+    }
+    section{
+       
+        width: 100%;
+        height: 100%;
+        margin: 0px;
+       
+    }
+}
+@media(min-width:280px){
+    body{
+        box-sizing: border-box;
+                display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .box{
+                width: 100%;
+                height: 100%;
+          
+        /* flex-direction: column; */
+                margin-top: 20%;
+            }
+    h7{
+        font-size: 30px;
+        margin-left: -40px;
+    }
+    button{
+        width: 80px;
+    }
+    #reset{
+        width: 95px;
+        margin-left: 40%;
+        margin-top: 10%;
+    }
+}
+@media(min-width:580px){
+    h7{
+        font-size: 40px;
+        margin-left: -60px;
+    }
+    button{
+        font-size: 30px;
+        width: 95px;
+        margin-left: 10px;
+    }
+    #reset{
+        margin-left: 40%;
+        width: 150px;
+    }
+}
+@media(min-width:693px){
+    .box{
+                width: 100%;
+                height: 100%;
+          
+        /* flex-direction: column; */
+                margin-top: 30%;
+            }
+            button{
+        font-size: 30px;
+        width: 95px;
+        margin-left: 5px;
+    }
+}
+@media(min-width:1024px){
+    h7{
+        margin-left: -120px;
+        font-size: 40px;
+    }
+    .btnn{
+        margin-left: -82px;
+    }
+    .box{
+                width: 100%;
+                height: 100%;
+          
+        /* flex-direction: column; */
+                margin-top: 0px;
+            }
+            #reset{
+                margin-top: 0px;
+            }
+}
+    </style>
+</head>
+
+<body>
+    <section>
+        <div class="box">
+            <div class="h1">
+                <h7 class="sahitya-bold ">LET'S PLAY</h7>
+            </div>
+            <div class="first">
+                <button id="firstb" class='boxes' value='1'></button>
+                <button id="secondb" class='boxes' value='2'></button>
+                <button id="thirdb" class='boxes' value='3'></button>
+            </div>
+            <div class="second">
+                <button id="fourthb" class='boxes' value='4'></button>
+                <button id="fifthb" class='boxes' value='5'></button>
+                <button id="sixthb" class='boxes' value='6'></button>
+            </div>
+            <div class="third">
+                <button id="seventhb" class='boxes' value='7'></button>
+                <button id="eighthb" class='boxes' value='8'></button>
+                <button id="ninethb" class='boxes' value='9'></button>
+            </div>
+            <div class="btnn">
+                <button id="p1" class="p1">p1</button>
+                <button id="p2" class="p2">p2</button>
+                <button id="toss"class="toss">toss</button>
+            </div>
+           
+            
+            <button id="reset">RESET</button>
+        </div>
+    </section>
+    
+    <script>
+        const h1 = document.querySelector('.h1')
+        const btn = document.querySelectorAll('button')
+        const boxes = document.querySelectorAll('.boxes')
+        
+        const reset = document.querySelector('#reset')
+        const p1 = document.querySelector('#p1')
+        const p2 = document.querySelector('#p2')
+        const toss = document.querySelector('#toss')
+        const box1 = document.querySelector('#firstb')
+        const box2 = document.querySelector('#secondb')
+        const box3 = document.querySelector('#thirdb')
+        const box4 = document.querySelector('#fourthb')
+        const box5 = document.querySelector('#fifthb')
+        const box6 = document.querySelector('#sixthb')
+        const box7 = document.querySelector('#seventhb')
+        const box8 = document.querySelector('#eighthb')
+        const box9 = document.querySelector('#ninethb')
+
+        let count = 0
+        reset.addEventListener('click',function (e) {
+            e.preventDefault()
+            location.reload();
+        })
+        toss.addEventListener('click', function (e) {
+            e.preventDefault()
+            const randomDecimal = Math.random();
+            let tosswinner = Math.round(randomDecimal);
+            // console.log(tosswinner)
+            
+            
+            if (tosswinner == 0) {
+                h1.innerText = 'P1 WINS  '
+                h1.style.marginLeft = '25%'
+                toss.disabled = 'true';
+                p1.disabled='true';
+                p2.disabled='true';
+                toss.disabled='true';
+                toss.style.backgroundColor='#630001'
+                toss.style.fontSize='25px'
+                toss.style.color='white'
+                btn.forEach(element => {
+                    element.addEventListener('click', function (e) {
+                        e.preventDefault()
+                        
+                        // console.log('clicked')
+                        // let val = element.getAttribute('value')
+                        // console.log(val)
+                        
+                        if (count % 2 == 0) {
+                            
+                            element.innerText = 'X'
+                            element.value = 'X'
+                            count = count + 1
+                            // element.style.backgroundColor='#944547'
+                            // element.style.fontSize='35px'
+                            // element.style.height='85px'
+                            // boxes.style.height='60px'
+                            element.style.color='#FFFAE4'
+                            // let val = element.getAttribute('value')
+                            // val = '*'
+                            //  console.log(val)
+                            // boxes.style.backgroundColor='#333333'
+                       
+                            // console.log(element.value)
+
+
+                            let box1val = box1.getAttribute('value')
+                            let box2val = box2.getAttribute('value')
+                            let box3val = box3.getAttribute('value')
+                            if (box1val === box2val && box2val === box3val) {
+                                h1.innerText = 'P1 wins'
+                                box4.disabled = true;
+                                box5.disabled = true;
+                                box6.disabled = true;
+                                box7.disabled = true;
+                                box8.disabled = true;
+                                box9.disabled = true;
+
+                                box1.disabled=true;
+                                box2.disabled=true;
+                                box3.disabled=true;
+                                p1.disabled='true'
+                                p1.style.backgroundColor = 'green'
+                                p2.disabled='true'
+                                box1.style.backgroundColor = "green"
+                                box1.style.color = 'white'
+                                box1.style.fontSize = "15px"
+                                box2.style.backgroundColor = "green"
+                                box2.style.color = 'white'
+                                box2.style.fontSize = "15px"
+                                box3.style.backgroundColor = "green"
+                                box3.style.color = 'white'
+                                box3.style.fontSize = "15px"
+
+                                // console.log(box1.innerText)
+                                // console.log(box2.innerText)
+                                // console.log(box3.innerText)
+                                console.log('entered')
+                            } else if (box1.value === box5.value && box5.value === box9.value) {
+                                h1.innerText = 'P1 wins'
+                                box2.disabled = true;
+                                box3.disabled = true;
+
+                                box4.disabled = true;
+                                box6.disabled = true;
+                                box7.disabled = true;
+                                box8.disabled = true;
+                                box1.disabled = true;
+                                box9.disabled = true;
+                                box5.disabled = true;
+                                p1.style.backgroundColor='green'
+                                p1.disabled='true'
+                                p2.disabled='true'
+                                box1.style.backgroundColor = "green"
+                                box1.style.color = 'white'
+                                box1.style.fontSize = "15px"
+                                box5.style.backgroundColor = "green"
+                                box5.style.color = 'white'
+                                box5.style.fontSize = "15px"
+                                box9.style.backgroundColor = "green"
+                                box9.style.color = 'white'
+                                box9.style.fontSize = "15px"
+
+                                // console.log(box1.innerText)
+                                // console.log(box5.innerText)
+                                // console.log(box9.innerText)
+                            } else if (box1.value === box4.value && box4.value === box7.value) {
+                                h1.innerText = 'P1 wins'
+                                box2.disabled = true;
+                                box3.disabled = true;
+                                box5.disabled = true;
+                                box6.disabled = true;
+                                box8.disabled = true;
+                                box9.disabled = true;
+                                box1.disabled = true;
+                                box4.disabled = true;
+                                box7.disabled = true;
+                                p1.style.backgroundColor='green'
+                                p1.disabled='true'
+                                p2.disabled='true'
+                                box1.style.backgroundColor = "green"
+                                box1.style.color = 'white'
+                                box1.style.fontSize = "15px"
+                                box4.style.backgroundColor = "green"
+                                box4.style.color = 'white'
+                                box4.style.fontSize = "15px"
+                                box7.style.backgroundColor = "green"
+                                box7.style.color = 'white'
+                                box7.style.fontSize = "15px"
+
+                            } else if (box2.value === box5.value && box5.value === box8.value) {
+                                h1.innerText = 'P1 wins'
+                                box1.disabled = true;
+                                box3.disabled = true;
+                                box4.disabled = true;
+                                box6.disabled = true;
+                                box7.disabled = true;
+                                box9.disabled = true;
+                                box2.disabled = true;
+                                box5.disabled = true;
+                                box8.disabled = true;
+                                p1.style.backgroundColor='green'
+                                p1.disabled='true'
+                                p2.disabled='true'
+                                box2.style.backgroundColor = "green"
+                                box2.style.color = 'white'
+                                box2.style.fontSize = "15px"
+                                box5.style.backgroundColor = "green"
+                                box5.style.color = 'white'
+                                box5.style.fontSize = "15px"
+                                box8.style.backgroundColor = "green"
+                                box8.style.color = 'white'
+                                box8.style.fontSize = "15px"
+
+                            } else if (box1.value === box4.value && box4.value === box7.value) {
+                                h1.innerText = 'P1 wins'
+                                box2.disabled = true;
+                                box3.disabled = true;
+                                box5.disabled = true;
+                                box6.disabled = true;
+                                box8.disabled = true;
+                                box9.disabled = true;
+                                box1.disabled = true;
+                                box4.disabled = true;
+                                box7.disabled = true;
+                                p1.style.backgroundColor='green'
+                                p1.disabled='true'
+                                p2.disabled='true'
+                                box1.style.backgroundColor = "green"
+                                box1.style.color = 'white'
+                                box1.style.fontSize = "15px"
+                                box4.style.backgroundColor = "green"
+                                box4.style.color = 'white'
+                                box4.style.fontSize = "15px"
+                                box7.style.backgroundColor = "green"
+                                box7.style.color = 'white'
+                                box7.style.fontSize = "15px"
+
+                            } else if (box3.value === box6.value && box6.value === box9.value) {
+                                h1.innerText = 'P1 wins'
+                                box1.disabled = true;
+
+                                box2.disabled = true;
+                                box4.disabled = true;
+                                box5.disabled = true;
+                                box7.disabled = true;
+                                box8.disabled = true;
+                                box3.disabled = true;
+                                box6.disabled = true;
+                                box9.disabled = true;
+                                p1.style.backgroundColor='green'
+                                p1.disabled='true'
+                                p2.disabled='true'
+
+                                box3.style.backgroundColor = "green"
+                                box3.style.color = 'white'
+                                box3.style.fontSize = "15px"
+                                box6.style.backgroundColor = "green"
+                                box6.style.color = 'white'
+                                box6.style.fontSize = "15px"
+                                box9.style.backgroundColor = "green"
+                                box9.style.color = 'white'
+                                box9.style.fontSize = "15px"
+
+                            } else if (box4.value === box5.value && box5.value === box6.value) {
+                                h1.innerText = 'P1 wins'
+                                box1.disabled = true;
+                                box2.disabled = true;
+                                box3.disabled = true;
+                                box7.disabled = true;
+                                box8.disabled = true;
+                                box9.disabled = true;
+                                box4.disabled = true;
+                                box5.disabled = true;
+                                box6.disabled = true;
+                                p1.style.backgroundColor='green'
+                                p1.disabled='true'
+                                p2.disabled='true'
+                                box4.style.backgroundColor = "green"
+                                box4.style.color = 'white'
+                                box4.style.fontSize = "15px"
+                                box5.style.backgroundColor = "green"
+                                box5.style.color = 'white'
+                                box5.style.fontSize = "15px"
+                                box6.style.backgroundColor = "green"
+                                box6.style.color = 'white'
+                                box6.style.fontSize = "15px"
+
+
+                            } else if (box7.value === box8.value && box8.value === box9.value) {
+                                h1.innerText = 'P1 wins'
+                                box1.disabled = true;
+                                box2.disabled = true;
+                                box3.disabled = true;
+                                box4.disabled = true;
+                                box5.disabled = true;
+                                box6.disabled = true;
+                                box7.disabled = true;
+                                box8.disabled = true;
+                                box9.disabled = true;
+                                p1.style.backgroundColor='green'
+                                p1.disabled='true'
+                                p2.disabled='true'
+                                box7.style.backgroundColor = "green"
+                                box7.style.color = 'white'
+                                box7.style.fontSize = "15px"
+                                box8.style.backgroundColor = "green"
+                                box8.style.color = 'white'
+                                box8.style.fontSize = "15px"
+                                box9.style.backgroundColor = "green"
+                                box9.style.color = 'white'
+                                box9.style.fontSize = "15px"
+
+                            } else if (box3.value === box5.value && box5.value === box7.value) {
+                                h1.innerText = 'P1 wins'
+                                box1.disabled = true;
+                                box2.disabled = true;
+                                box4.disabled = true;
+                                box6.disabled = true;
+                                box8.disabled = true;
+                                box5.disabled = true;
+                                box7.disabled = true;
+                                box3.disabled = true;
+                                p1.style.backgroundColor='green'
+                                p1.disabled='true'
+                                p2.disabled='true'
+                                box9.disabled = true;
+                                box5.style.backgroundColor = "green"
+                                box5.style.color = 'white'
+                                box5.style.fontSize = "15px"
+                                box7.style.backgroundColor = "green"
+                                box7.style.color = 'white'
+                                box7.style.fontSize = "15px"
+                                box3.style.backgroundColor = "green"
+                                box3.style.color = 'white'
+                                box3.style.fontSize = "15px"
+
+                            }
+                            else if (count==9) {
+                                h1.innerText='DRAW!!'
+                                box1.disabled = true;
+                                box2.disabled = true;
+                                box4.disabled = true;
+                                box6.disabled = true;
+                                box8.disabled = true;
+                                box5.disabled = true;
+                                box7.disabled = true;
+                                box3.disabled = true;
+
+                                box9.disabled = true;
+                                // p1.style.backgroundColor='green'
+                                p1.disabled='true'
+                                p2.disabled='true'
+                                box1.style.backgroundColor = "yellow"
+                                box2.style.backgroundColor = "yellow"
+                                box3.style.backgroundColor = "yellow"
+                                box4.style.backgroundColor = "yellow"
+                                box5.style.backgroundColor = "yellow"
+                                box6.style.backgroundColor = "yellow"
+                                box7.style.backgroundColor = "yellow"
+                                box8.style.backgroundColor = "yellow"
+                                box9.style.backgroundColor = "yellow"
+                            }
+                       
+
+                        }
+
+
+
+
+
+
+                        else {
+                            toss.disabled = 'true';
+                            element.innerText = '0'
+                            count = count + 1
+                            element.value = '0'
+                            console.log(element.value)
+                            // let val = element.getAttribute('value')
+                            // val = '0'
+                            //  console.log(val)
+                            // element.style.backgroundColor='#FFFAE4'
+                            // element.style.fontSize='35px'
+                            // element.style.height='85px'
+                            // boxes.style.height='60px'
+                            element.style.color='#944547 '
+                            
+                            let box1val = box1.getAttribute('value')
+                            let box2val = box2.getAttribute('value')
+                            let box3val = box3.getAttribute('value')
+                            if (box1val === box2val && box2val === box3val) {
+                                h1.innerText = 'P2 wins'
+                                p2.style.backgroundColor='green'
+                                box4.disabled = true;
+                                box5.disabled = true;
+                                box6.disabled = true;
+                                box7.disabled = true;
+                                box8.disabled = true;
+                                box9.disabled = true;
+
+                                box1.disabled=true;
+                                box2.disabled=true;
+                                box3.disabled=true;
+                                p1.disabled='true'
+                                p2.disabled='true'
+                                box1.style.backgroundColor = "green"
+                                box1.style.color = 'white'
+                                box1.style.fontSize = "15px"
+                                box2.style.backgroundColor = "green"
+                                box2.style.color = 'white'
+                                box2.style.fontSize = "15px"
+                                box3.style.backgroundColor = "green"
+                                box3.style.color = 'white'
+                                box3.style.fontSize = "15px"
+
+                                // console.log(box1.innerText)
+                                // console.log(box2.innerText)
+                                // console.log(box3.innerText)
+                                console.log('entered')
+                            } else if (box1.value === box5.value && box5.value === box9.value) {
+                                h1.innerText = 'P2 wins'
+                                box2.disabled = true;
+                                box3.disabled = true;
+
+                                box4.disabled = true;
+                                box6.disabled = true;
+                                box7.disabled = true;
+                                box8.disabled = true;
+                                box1.disabled = true;
+                                box9.disabled = true;
+                                box5.disabled = true;
+                                p2.style.backgroundColor='green'
+                                p1.disabled='true'
+                                p2.disabled='true'
+                                box1.style.backgroundColor = "green"
+                                box1.style.color = 'white'
+                                box1.style.fontSize = "15px"
+                                box5.style.backgroundColor = "green"
+                                box5.style.color = 'white'
+                                box5.style.fontSize = "15px"
+                                box9.style.backgroundColor = "green"
+                                box9.style.color = 'white'
+                                box9.style.fontSize = "15px"
+
+                                // console.log(box1.innerText)
+                                // console.log(box5.innerText)
+                                // console.log(box9.innerText)
+                            } else if (box1.value === box4.value && box4.value === box7.value) {
+                                h1.innerText = 'P2 wins'
+                                box2.disabled = true;
+                                box3.disabled = true;
+                                box5.disabled = true;
+                                box6.disabled = true;
+                                box8.disabled = true;
+                                box9.disabled = true;
+                                box1.disabled = true;
+                                box4.disabled = true;
+                                box7.disabled = true;
+                                p2.style.backgroundColor='green'
+                                p1.disabled='true'
+                                p2.disabled='true'
+                                box1.style.backgroundColor = "green"
+                                box1.style.color = 'white'
+                                box1.style.fontSize = "15px"
+                                box4.style.backgroundColor = "green"
+                                box4.style.color = 'white'
+                                box4.style.fontSize = "15px"
+                                box7.style.backgroundColor = "green"
+                                box7.style.color = 'white'
+                                box7.style.fontSize = "15px"
+
+                            } else if (box2.value === box5.value && box5.value === box8.value) {
+                                h1.innerText = 'P2 wins'
+                                box1.disabled = true;
+                                box3.disabled = true;
+                                box4.disabled = true;
+                                box6.disabled = true;
+                                box7.disabled = true;
+                                box9.disabled = true;
+                                box2.disabled = true;
+                                box5.disabled = true;
+                                box8.disabled = true;
+                                p2.style.backgroundColor='green'
+                                p1.disabled='true'
+                                p2.disabled='true'
+                                box2.style.backgroundColor = "green"
+                                box2.style.color = 'white'
+                                box2.style.fontSize = "15px"
+                                box5.style.backgroundColor = "green"
+                                box5.style.color = 'white'
+                                box5.style.fontSize = "15px"
+                                box8.style.backgroundColor = "green"
+                                box8.style.color = 'white'
+                                box8.style.fontSize = "15px"
+
+                            } else if (box1.value === box4.value && box4.value === box7.value) {
+                                h1.innerText = 'P2 wins'
+                                box2.disabled = true;
+                                box3.disabled = true;
+                                box5.disabled = true;
+                                box6.disabled = true;
+                                box8.disabled = true;
+                                box9.disabled = true;
+                                box1.disabled = true;
+                                box4.disabled = true;
+                                box7.disabled = true;
+                                p2.style.backgroundColor='green'
+                                p1.disabled='true'
+                                p2.disabled='true'
+
+                                box1.style.backgroundColor = "green"
+                                box1.style.color = 'white'
+                                box1.style.fontSize = "15px"
+                                box4.style.backgroundColor = "green"
+                                box4.style.color = 'white'
+                                box4.style.fontSize = "15px"
+                                box7.style.backgroundColor = "green"
+                                box7.style.color = 'white'
+                                box7.style.fontSize = "15px"
+
+                            } else if (box3.value === box6.value && box6.value === box9.value) {
+                                h1.innerText = 'P2 wins'
+                                box1.disabled = true;
+
+                                box2.disabled = true;
+                                box4.disabled = true;
+                                box5.disabled = true;
+                                box7.disabled = true;
+                                box8.disabled = true;
+                                box3.disabled = true;
+                                box6.disabled = true;
+                                box9.disabled = true;
+                                p2.style.backgroundColor='green'
+                                p1.disabled='true'
+                                p2.disabled='true'
+
+                                box3.style.backgroundColor = "green"
+                                box3.style.color = 'white'
+                                box3.style.fontSize = "15px"
+                                box6.style.backgroundColor = "green"
+                                box6.style.color = 'white'
+                                box6.style.fontSize = "15px"
+                                box9.style.backgroundColor = "green"
+                                box9.style.color = 'white'
+                                box9.style.fontSize = "15px"
+
+                            } else if (box4.value === box5.value && box5.value === box6.value) {
+                                h1.innerText = 'P2 wins'
+                                box1.disabled = true;
+                                box2.disabled = true;
+                                box3.disabled = true;
+                                box7.disabled = true;
+                                box8.disabled = true;
+                                box9.disabled = true;
+                                box4.disabled = true;
+                                box5.disabled = true;
+                                box6.disabled = true;
+                                p2.style.backgroundColor='green'
+                                p1.disabled='true'
+                                p2.disabled='true'
+                                box4.style.backgroundColor = "green"
+                                box4.style.color = 'white'
+                                box4.style.fontSize = "15px"
+                                box5.style.backgroundColor = "green"
+                                box5.style.color = 'white'
+                                box5.style.fontSize = "15px"
+                                box6.style.backgroundColor = "green"
+                                box6.style.color = 'white'
+                                box6.style.fontSize = "15px"
+
+
+                            } else if (box7.value === box8.value && box8.value === box9.value) {
+                                h1.innerText = 'P2 wins'
+                                box1.disabled = true;
+                                box2.disabled = true;
+                                box3.disabled = true;
+                                box4.disabled = true;
+                                box5.disabled = true;
+                                box6.disabled = true;
+                                box7.disabled = true;
+                                box8.disabled = true;
+                                box9.disabled = true;
+                                p2.style.backgroundColor='green'
+                                p1.disabled='true'
+                                p2.disabled='true'
+                                box7.style.backgroundColor = "green"
+                                box7.style.color = 'white'
+                                box7.style.fontSize = "15px"
+                                box8.style.backgroundColor = "green"
+                                box8.style.color = 'white'
+                                box8.style.fontSize = "15px"
+                                box9.style.backgroundColor = "green"
+                                box9.style.color = 'white'
+                                box9.style.fontSize = "15px"
+
+                            } else if (box3.value === box5.value && box5.value === box7.value) {
+                                h1.innerText = 'P2 wins'
+                                box1.disabled = true;
+                                box2.disabled = true;
+                                box4.disabled = true;
+                                box6.disabled = true;
+                                box8.disabled = true;
+                                box5.disabled = true;
+                                box7.disabled = true;
+                                box3.disabled = true;
+                                p2.style.backgroundColor='green'
+                                p1.disabled='true'
+                                p2.disabled='true'
+                                box9.disabled = true;
+                                box5.style.backgroundColor = "green"
+                                box5.style.color = 'white'
+                                box5.style.fontSize = "15px"
+                                box7.style.backgroundColor = "green"
+                                box7.style.color = 'white'
+                                box7.style.fontSize = "15px"
+                                box3.style.backgroundColor = "green"
+                                box3.style.color = 'white'
+                                box3.style.fontSize = "15px"
+
+                            }
+                            else if (count==9) {
+                                h1.innerText='DRAW!!'
+                                box1.disabled = true;
+                                box2.disabled = true;
+                                box4.disabled = true;
+                                box6.disabled = true;
+                                box8.disabled = true;
+                                box5.disabled = true;
+                                box7.disabled = true;
+                                box3.disabled = true;
+
+                                box9.disabled = true;
+                                p1.disabled='true'
+                                p2.disabled='true'
+                                box1.style.backgroundColor = "yellow"
+                                box2.style.backgroundColor = "yellow"
+                                box3.style.backgroundColor = "yellow"
+                                box4.style.backgroundColor = "yellow"
+                                box5.style.backgroundColor = "yellow"
+                                box6.style.backgroundColor = "yellow"
+                                box7.style.backgroundColor = "yellow"
+                                box8.style.backgroundColor = "yellow"
+                                box9.style.backgroundColor = "yellow"
+                            }
+                            // else{
+                            //     box1.disabled='true';
+                            //     box2.disabled='true';
+                            //     box3.disabled='true';
+                            //     box4.disabled='true';
+                            //     box5.disabled='true';
+                            //     box6.disabled='true';
+                            //     box7.disabled='true';
+                            //     box8.disabled='true';
+                            //     box9.disabled='true';
+                            //     h1.innerText=' MATCH DRAW!!!!'
+                            // }
+                        }
+
+
+                    })
+                });
+            }
+
+
+
+
+
+            else {
+                h1.innerText = 'P2 WINS !!'
+                h1.style.marginLeft = '25%'
+                p1.disabled='true';
+                p2.disabled='true';
+                toss.disabled='true';
+                btn.forEach(element => {
+                    element.addEventListener('click', function (e) {
+                        e.preventDefault()
+                        // console.log('clicked')
+                        let val = element.getAttribute('value')
+                        // console.log(val)
+                        if (count % 2 == 0) {
+
+                            element.innerText = 'X'
+                            element.value = 'X'
+                            count = count + 1
+                            element.style.color='#FFFAE4'
+                            let box1val = box1.getAttribute('value')
+                            let box2val = box2.getAttribute('value')
+                            let box3val = box3.getAttribute('value')
+                            if (box1val === box2val && box2val === box3val) {
+                                h1.innerText = 'P2 wins'
+                                box4.disabled = true;
+                                box5.disabled = true;
+                                box6.disabled = true;
+                                box7.disabled = true;
+                                box8.disabled = true;
+                                box9.disabled = true;
+                                
+                                box1.disabled=true;
+                                box2.disabled=true;
+                                box3.disabled=true;
+                                p2.style.backgroundColor='green'
+                                p1.disabled='true'
+                                p2.disabled='true'
+                                box1.style.backgroundColor = "green"
+                                box1.style.color = 'white'
+                                box1.style.fontSize = "15px"
+                                box2.style.backgroundColor = "green"
+                                box2.style.color = 'white'
+                                box2.style.fontSize = "15px"
+                                box3.style.backgroundColor = "green"
+                                box3.style.color = 'white'
+                                box3.style.fontSize = "15px"
+
+                                // console.log(box1.innerText)
+                                // console.log(box2.innerText)
+                                // console.log(box3.innerText)
+                                console.log('entered')
+                            } else if (box1.value === box5.value && box5.value === box9.value) {
+                                h1.innerText = 'P2 wins'
+                                box2.disabled = true;
+                                box3.disabled = true;
+
+                                box4.disabled = true;
+                                box6.disabled = true;
+                                box7.disabled = true;
+                                box8.disabled = true;
+                                box1.disabled = true;
+                                box9.disabled = true;
+                                box5.disabled = true;
+                                p2.style.backgroundColor='green'
+                                p1.disabled='true'
+                                p2.disabled='true'
+                                box1.style.backgroundColor = "green"
+                                box1.style.color = 'white'
+                                box1.style.fontSize = "15px"
+                                box5.style.backgroundColor = "green"
+                                box5.style.color = 'white'
+                                box5.style.fontSize = "15px"
+                                box9.style.backgroundColor = "green"
+                                box9.style.color = 'white'
+                                box9.style.fontSize = "15px"
+
+                                // console.log(box1.innerText)
+                                // console.log(box5.innerText)
+                                // console.log(box9.innerText)
+                            } else if (box1.value === box4.value && box4.value === box7.value) {
+                                h1.innerText = 'P2 wins'
+                                box2.disabled = true;
+                                box3.disabled = true;
+                                box5.disabled = true;
+                                box6.disabled = true;
+                                box8.disabled = true;
+                                box9.disabled = true;
+                                box1.disabled = true;
+                                box4.disabled = true;
+                                box7.disabled = true;
+                                p2.style.backgroundColor='green'
+                                p1.disabled='true'
+                                p2.disabled='true'
+                                box1.style.backgroundColor = "green"
+                                box1.style.color = 'white'
+                                box1.style.fontSize = "15px"
+                                box4.style.backgroundColor = "green"
+                                box4.style.color = 'white'
+                                box4.style.fontSize = "15px"
+                                box7.style.backgroundColor = "green"
+                                box7.style.color = 'white'
+                                box7.style.fontSize = "15px"
+
+                            } else if (box2.value === box5.value && box5.value === box8.value) {
+                                h1.innerText = 'P2 wins'
+                                box1.disabled = true;
+                                box3.disabled = true;
+                                box4.disabled = true;
+                                box6.disabled = true;
+                                box7.disabled = true;
+                                box9.disabled = true;
+                                box2.disabled = true;
+                                box5.disabled = true;
+                                box8.disabled = true;
+                                p2.style.backgroundColor='green'
+                                p1.disabled='true'
+                                p2.disabled='true'
+                                box2.style.backgroundColor = "green"
+                                box2.style.color = 'white'
+                                box2.style.fontSize = "15px"
+                                box5.style.backgroundColor = "green"
+                                box5.style.color = 'white'
+                                box5.style.fontSize = "15px"
+                                box8.style.backgroundColor = "green"
+                                box8.style.color = 'white'
+                                box8.style.fontSize = "15px"
+
+                            } else if (box1.value === box4.value && box4.value === box7.value) {
+                                h1.innerText = 'P2 wins'
+                                box2.disabled = true;
+                                box3.disabled = true;
+                                box5.disabled = true;
+                                box6.disabled = true;
+                                box8.disabled = true;
+                                box9.disabled = true;
+                                box1.disabled = true;
+                                box4.disabled = true;
+                                box7.disabled = true;
+                                p2.style.backgroundColor='green'
+                                p1.disabled='true'
+                                p2.disabled='true'
+                                box1.style.backgroundColor = "green"
+                                box1.style.color = 'white'
+                                box1.style.fontSize = "15px"
+                                box4.style.backgroundColor = "green"
+                                box4.style.color = 'white'
+                                box4.style.fontSize = "15px"
+                                box7.style.backgroundColor = "green"
+                                box7.style.color = 'white'
+                                box7.style.fontSize = "15px"
+
+                            } else if (box3.value === box6.value && box6.value === box9.value) {
+                                h1.innerText = 'P2 wins'
+                                box1.disabled = true;
+
+                                box2.disabled = true;
+                                box4.disabled = true;
+                                box5.disabled = true;
+                                box7.disabled = true;
+                                box8.disabled = true;
+                                box3.disabled = true;
+                                box6.disabled = true;
+                                box9.disabled = true;
+                                p2.style.backgroundColor='green'
+                                p1.disabled='true'
+                                p2.disabled='true'
+
+                                box3.style.backgroundColor = "green"
+                                box3.style.color = 'white'
+                                box3.style.fontSize = "15px"
+                                box6.style.backgroundColor = "green"
+                                box6.style.color = 'white'
+                                box6.style.fontSize = "15px"
+                                box9.style.backgroundColor = "green"
+                                box9.style.color = 'white'
+                                box9.style.fontSize = "15px"
+
+                            } else if (box4.value === box5.value && box5.value === box6.value) {
+                                h1.innerText = 'P2 wins'
+                                box1.disabled = true;
+                                box2.disabled = true;
+                                box3.disabled = true;
+                                box7.disabled = true;
+                                box8.disabled = true;
+                                box9.disabled = true;
+                                box4.disabled = true;
+                                box5.disabled = true;
+                                box6.disabled = true;
+                                p2.style.backgroundColor='green'
+                                p1.disabled='true'
+                                p2.disabled='true'
+                                box4.style.backgroundColor = "green"
+                                box4.style.color = 'white'
+                                box4.style.fontSize = "15px"
+                                box5.style.backgroundColor = "green"
+                                box5.style.color = 'white'
+                                box5.style.fontSize = "15px"
+                                box6.style.backgroundColor = "green"
+                                box6.style.color = 'white'
+                                box6.style.fontSize = "15px"
+
+
+                            } else if (box7.value === box8.value && box8.value === box9.value) {
+                                h1.innerText = 'P2 wins'
+                                box1.disabled = true;
+                                box2.disabled = true;
+                                box3.disabled = true;
+                                box4.disabled = true;
+                                box5.disabled = true;
+                                box6.disabled = true;
+                                box7.disabled = true;
+                                box8.disabled = true;
+                                box9.disabled = true;
+                                p2.style.backgroundColor='green'
+                                p1.disabled='true'
+                                p2.disabled='true'
+                                box7.style.backgroundColor = "green"
+                                box7.style.color = 'white'
+                                box7.style.fontSize = "15px"
+                                box8.style.backgroundColor = "green"
+                                box8.style.color = 'white'
+                                box8.style.fontSize = "15px"
+                                box9.style.backgroundColor = "green"
+                                box9.style.color = 'white'
+                                box9.style.fontSize = "15px"
+
+                            } else if (box3.value === box5.value && box5.value === box7.value) {
+                                h1.innerText = 'P2 wins'
+                                box1.disabled = true;
+                                box2.disabled = true;
+                                box4.disabled = true;
+                                box6.disabled = true;
+                                box8.disabled = true;
+                                box5.disabled = true;
+                                box7.disabled = true;
+                                box3.disabled = true;
+                                p2.style.backgroundColor='green'
+                                p1.disabled='true'
+                                p2.disabled='true'
+                                box9.disabled = true;
+                                box5.style.backgroundColor = "green"
+                                box5.style.color = 'white'
+                                box5.style.fontSize = "15px"
+                                box7.style.backgroundColor = "green"
+                                box7.style.color = 'white'
+                                box7.style.fontSize = "15px"
+                                box3.style.backgroundColor = "green"
+                                box3.style.color = 'white'
+                                box3.style.fontSize = "15px"
+
+                            }
+                            else if (count==9) {
+                                h1.innerText='DRAW!!'
+                                box1.disabled = true;
+                                box2.disabled = true;
+                                box4.disabled = true;
+                                box6.disabled = true;
+                                box8.disabled = true;
+                                box5.disabled = true;
+                                box7.disabled = true;
+                                box3.disabled = true;
+
+                                box9.disabled = true;
+                                // p2.style.backgroundColor='green'
+                                p1.disabled='true'
+                                p2.disabled='true'
+                                box1.style.backgroundColor = "yellow"
+                                box2.style.backgroundColor = "yellow"
+                                box3.style.backgroundColor = "yellow"
+                                box4.style.backgroundColor = "yellow"
+                                box5.style.backgroundColor = "yellow"
+                                box6.style.backgroundColor = "yellow"
+                                box7.style.backgroundColor = "yellow"
+                                box8.style.backgroundColor = "yellow"
+                                box9.style.backgroundColor = "yellow"
+                            }
+                       
+                        } 
+                        
+                        else {
+                            element.innerText = '0'
+                            element.value = '0'
+                            count = count + 1
+                            element.style.color='#944547 '
+                            let box1val = box1.getAttribute('value')
+                            let box2val = box2.getAttribute('value')
+                            let box3val = box3.getAttribute('value')
+                            if (box1val === box2val && box2val === box3val) {
+                                h1.innerText = 'P1 wins'
+                                p1.style.backgroundColor='green'
+                                box4.disabled = true;
+                                box5.disabled = true;
+                                box6.disabled = true;
+                                box7.disabled = true;
+                                box8.disabled = true;
+                                box9.disabled = true;
+
+                                box1.disabled=true;
+                                box2.disabled=true;
+                                box3.disabled=true;
+                                p1.disabled='true'
+                                p2.disabled='true'
+                                box1.style.backgroundColor = "green"
+                                box1.style.color = 'white'
+                                box1.style.fontSize = "15px"
+                                box2.style.backgroundColor = "green"
+                                box2.style.color = 'white'
+                                box2.style.fontSize = "15px"
+                                box3.style.backgroundColor = "green"
+                                box3.style.color = 'white'
+                                box3.style.fontSize = "15px"
+
+                                // console.log(box1.innerText)
+                                // console.log(box2.innerText)
+                                // console.log(box3.innerText)
+                                console.log('entered')
+                            } else if (box1.value === box5.value && box5.value === box9.value) {
+                                h1.innerText = 'P1 wins'
+                                box2.disabled = true;
+                                box3.disabled = true;
+
+                                box4.disabled = true;
+                                box6.disabled = true;
+                                box7.disabled = true;
+                                box8.disabled = true;
+                                box1.disabled = true;
+                                box9.disabled = true;
+                                box5.disabled = true;
+                                p1.style.backgroundColor='green'
+                                p1.disabled='true'
+                                p2.disabled='true'
+                                box1.style.backgroundColor = "green"
+                                box1.style.color = 'white'
+                                box1.style.fontSize = "15px"
+                                box5.style.backgroundColor = "green"
+                                box5.style.color = 'white'
+                                box5.style.fontSize = "15px"
+                                box9.style.backgroundColor = "green"
+                                box9.style.color = 'white'
+                                box9.style.fontSize = "15px"
+
+                                // console.log(box1.innerText)
+                                // console.log(box5.innerText)
+                                // console.log(box9.innerText)
+                            } else if (box1.value === box4.value && box4.value === box7.value) {
+                                h1.innerText = 'P1 wins'
+                                box2.disabled = true;
+                                box3.disabled = true;
+                                box5.disabled = true;
+                                box6.disabled = true;
+                                box8.disabled = true;
+                                box9.disabled = true;
+                                box1.disabled = true;
+                                box4.disabled = true;
+                                box7.disabled = true;
+                                p1.style.backgroundColor='green'
+                                p1.disabled='true'
+                                p2.disabled='true'
+                                box1.style.backgroundColor = "green"
+                                box1.style.color = 'white'
+                                box1.style.fontSize = "15px"
+                                box4.style.backgroundColor = "green"
+                                box4.style.color = 'white'
+                                box4.style.fontSize = "15px"
+                                box7.style.backgroundColor = "green"
+                                box7.style.color = 'white'
+                                box7.style.fontSize = "15px"
+
+                            } else if (box2.value === box5.value && box5.value === box8.value) {
+                                h1.innerText = 'P1 wins'
+                                box1.disabled = true;
+                                box3.disabled = true;
+                                box4.disabled = true;
+                                box6.disabled = true;
+                                box7.disabled = true;
+                                box9.disabled = true;
+                                box2.disabled = true;
+                                box5.disabled = true;
+                                box8.disabled = true;
+                                p1.style.backgroundColor='green'
+                                p1.disabled='true'
+                                p2.disabled='true'
+                                box2.style.backgroundColor = "green"
+                                box2.style.color = 'white'
+                                box2.style.fontSize = "15px"
+                                box5.style.backgroundColor = "green"
+                                box5.style.color = 'white'
+                                box5.style.fontSize = "15px"
+                                box8.style.backgroundColor = "green"
+                                box8.style.color = 'white'
+                                box8.style.fontSize = "15px"
+
+                            } else if (box1.value === box4.value && box4.value === box7.value) {
+                                h1.innerText = 'P1 wins'
+                                box2.disabled = true;
+                                box3.disabled = true;
+                                box5.disabled = true;
+                                box6.disabled = true;
+                                box8.disabled = true;
+                                box9.disabled = true;
+                                box1.disabled = true;
+                                box4.disabled = true;
+                                box7.disabled = true;
+                                p1.style.backgroundColor='green'
+                                p1.disabled='true'
+                                p2.disabled='true'
+                                box1.style.backgroundColor = "green"
+                                box1.style.color = 'white'
+                                box1.style.fontSize = "15px"
+                                box4.style.backgroundColor = "green"
+                                box4.style.color = 'white'
+                                box4.style.fontSize = "15px"
+                                box7.style.backgroundColor = "green"
+                                box7.style.color = 'white'
+                                box7.style.fontSize = "15px"
+
+                            } else if (box3.value === box6.value && box6.value === box9.value) {
+                                h1.innerText = 'P1 wins'
+                                box1.disabled = true;
+
+                                box2.disabled = true;
+                                box4.disabled = true;
+                                box5.disabled = true;
+                                box7.disabled = true;
+                                box8.disabled = true;
+                                box3.disabled = true;
+                                box6.disabled = true;
+                                box9.disabled = true;
+                                p1.style.backgroundColor='green'
+                                p1.disabled='true'
+                                p2.disabled='true'
+
+                                box3.style.backgroundColor = "green"
+                                box3.style.color = 'white'
+                                box3.style.fontSize = "15px"
+                                box6.style.backgroundColor = "green"
+                                box6.style.color = 'white'
+                                box6.style.fontSize = "15px"
+                                box9.style.backgroundColor = "green"
+                                box9.style.color = 'white'
+                                box9.style.fontSize = "15px"
+
+                            } else if (box4.value === box5.value && box5.value === box6.value) {
+                                h1.innerText = 'P1 wins'
+                                box1.disabled = true;
+                                box2.disabled = true;
+                                box3.disabled = true;
+                                box7.disabled = true;
+                                box8.disabled = true;
+                                box9.disabled = true;
+                                box4.disabled = true;
+                                box5.disabled = true;
+                                p1.style.backgroundColor='green'
+                                box6.disabled = true;
+                                p1.disabled='true'
+                                p2.disabled='true'
+                                box4.style.backgroundColor = "green"
+                                box4.style.color = 'white'
+                                box4.style.fontSize = "15px"
+                                box5.style.backgroundColor = "green"
+                                box5.style.color = 'white'
+                                box5.style.fontSize = "15px"
+                                box6.style.backgroundColor = "green"
+                                box6.style.color = 'white'
+                                box6.style.fontSize = "15px"
+
+
+                            } else if (box7.value === box8.value && box8.value === box9.value) {
+                                h1.innerText = 'P1 wins'
+                                box1.disabled = true;
+                                box2.disabled = true;
+                                box3.disabled = true;
+                                box4.disabled = true;
+                                box5.disabled = true;
+                                box6.disabled = true;
+                                box7.disabled = true;
+                                box8.disabled = true;
+                                box9.disabled = true;
+                                p1.style.backgroundColor='green'
+                                p1.disabled='true'
+                                p2.disabled='true'
+                                box7.style.backgroundColor = "green"
+                                box7.style.color = 'white'
+                                box7.style.fontSize = "15px"
+                                box8.style.backgroundColor = "green"
+                                box8.style.color = 'white'
+                                box8.style.fontSize = "15px"
+                                box9.style.backgroundColor = "green"
+                                box9.style.color = 'white'
+                                box9.style.fontSize = "15px"
+
+                            } else if (box3.value === box5.value && box5.value === box7.value) {
+                                h1.innerText = 'P1 wins'
+                                box1.disabled = true;
+                                box2.disabled = true;
+                                box4.disabled = true;
+                                box6.disabled = true;
+                                box8.disabled = true;
+                                box5.disabled = true;
+                                box7.disabled = true;
+                                box3.disabled = true;
+                                p1.disabled='true'
+                                p2.disabled='true'
+                                box9.disabled = true;
+                                box5.style.backgroundColor = "green"
+                                box5.style.color = 'white'
+                                box5.style.fontSize = "15px"
+                                box7.style.backgroundColor = "green"
+                                box7.style.color = 'white'
+                                box7.style.fontSize = "15px"
+                                box3.style.backgroundColor = "green"
+                                box3.style.color = 'white'
+                                box3.style.fontSize = "15px"
+
+                            }
+                            else if (count==9) {
+                                h1.innerText='DRAW!!'
+                                box1.disabled = true;
+                                box2.disabled = true;
+                                box4.disabled = true;
+                                box6.disabled = true;
+                                box8.disabled = true;
+                                box5.disabled = true;
+                                box7.disabled = true;
+                                box3.disabled = true;
+
+                                box9.disabled = true;
+                                p1.disabled='true'
+                                p2.disabled='true'
+                                box1.style.backgroundColor = "yellow"
+                                box2.style.backgroundColor = "yellow"
+                                box3.style.backgroundColor = "yellow"
+                                box4.style.backgroundColor = "yellow"
+                                box5.style.backgroundColor = "yellow"
+                                box6.style.backgroundColor = "yellow"
+                                box7.style.backgroundColor = "yellow"
+                                box8.style.backgroundColor = "yellow"
+                                box9.style.backgroundColor = "yellow"
+                            }
+                       
+                        }
+                    
+
+                    })
+                });
+            }
+        })
+        // btn.forEach(element => {
+        //     element.addEventListener('click', function (e) {
+        //         e.preventDefault()
+        //         console.log('clicked')
+        //         let val = element.getAttribute('value')
+        //         console.log(val)
+
+        //     })
+        // });
+
+    </script>
+</body>
+
+</html>

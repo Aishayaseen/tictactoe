@@ -1,0 +1,128 @@
+.boxes {
+    border: 2px solid black;
+    padding: 20px;
+    width: 20%;
+    margin: 5px;
+    margin-left: 10%;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    /* flex-direction: column; */
+}
+body{
+
+    background-color: rgb(12, 12, 12);
+}
+section {
+    height: 100vh;
+    width: 100%;
+    /* display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; */
+}
+
+.h1 {
+    color: rgb(231, 231, 86);
+    font-size: 50px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-left: 45%;
+    display: block;
+}
+
+button {
+    padding: 14px 28px;
+    width: 10%;
+    border: none;
+    border-radius: 25px;
+    margin-left: 8%;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: "Segoe UI", sans-serif;
+    display: inline-block;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(to bottom, #1b1c3f, #4a4e91);
+    color: white;
+    animation: button-shimmer 2s infinite;
+    transition: all 0.3s ease-in-out;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+}
+
+.btnn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+
+}
+
+#toss {
+    padding: 10px;
+}
+
+.boxes {
+    margin: 12px;
+    height: 85px;
+    width: 120px;
+    border-radius: 10px;
+    background: #333;
+    justify-content: center;
+    align-items: center;
+    box-shadow: -5px -5px 15px #444, 5px 5px 15px #222, inset 5px 5px 10px #444,
+        inset -5px -5px 10px #222;
+    font-family: "Damion", cursive;
+    cursor: pointer;
+    border: none;
+    font-size: 35px;
+    color: rgb(161, 161, 161);
+    transition: 500ms;
+}
+
+.boxes:hover {
+    box-shadow: -5px -5px 15px #444, 5px 5px 15px #222, inset 5px 5px 10px #222,
+        inset -5px -10px 10px #444;
+    color: #FFFAE4;
+    transition: 500ms;
+}
+
+.sahitya-regular {
+    font-family: "Sahitya", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.sahitya-bold {
+    font-family: "Sahitya", serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.first {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin-left: 50%; */
+}
+
+.second {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin-left: 50%; */
+}
+
+.third {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin-left: 30%; */
+}
+
+#reset {
+    display: block;
+    margin-left: 80%;
+    margin-top: -20px;
+}
+
