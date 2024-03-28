@@ -139,6 +139,7 @@
             #reset{
                 margin-top: 0px;
             }
+            
 }
     </style>
 </head>
@@ -164,14 +165,17 @@
                 <button id="eighthb" class='boxes' value='8'></button>
                 <button id="ninethb" class='boxes' value='9'></button>
             </div>
+            <div>
+                
+            </div>
             <div class="btnn">
                 <button id="p1" class="p1">p1</button>
                 <button id="p2" class="p2">p2</button>
-                <button id="toss"class="toss">toss</button>
+                <button id="toss"class="toss">Toss</button>
             </div>
            
             
-            <button id="reset">RESET</button>
+            <button id="reset" >RESET</button>
         </div>
     </section>
     
@@ -207,8 +211,8 @@
             
             
             if (tosswinner == 0) {
-                h1.innerText = 'P1 WINS  '
-                h1.style.marginLeft = '25%'
+                h1.innerText = "P1's Turn"
+                h1.style.marginLeft = '38%'
                 toss.disabled = 'true';
                 p1.disabled='true';
                 p2.disabled='true';
@@ -804,11 +808,14 @@
 
 
             else {
-                h1.innerText = 'P2 WINS !!'
-                h1.style.marginLeft = '25%'
+                h1.innerText = "P2's Turn "
+                h1.style.marginLeft = '38%'
                 p1.disabled='true';
                 p2.disabled='true';
                 toss.disabled='true';
+                toss.style.backgroundColor='#630001'
+                toss.style.fontSize='25px'
+                toss.style.color='white'
                 btn.forEach(element => {
                     element.addEventListener('click', function (e) {
                         e.preventDefault()
